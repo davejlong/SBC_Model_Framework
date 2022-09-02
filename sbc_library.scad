@@ -1021,11 +1021,11 @@ module audio(x,y,rotation,side,type,pcbsize_z) {
         union() {  
             difference () {
                 union() {
-                    color("black") translate([0,2,0]) cube([size_x,10,4]);
-                    color("silver") translate([0,0,0]) cube([size_x,2,4]);
-                    color("black") translate([3.125,-2,2]) rotate([-90,0,0]) cylinder(d=4, h=6.25);
-                    }
-                color("dimgray") translate([3.125,-2.5,2]) rotate([-90,0,0]) cylinder(d=3, h=6);
+                    color("black") translate([0,2,0]) cube([size_x,10,6.2]);
+                    color("silver") translate([0,0,0]) cube([size_x,2,6.2]);
+                    color("black") translate([3.125,-2.5,2.9]) rotate([-90,0,0]) cylinder(d=5.8, h=6.25);
+                }
+                color("dimgray") translate([3.125,-2.51,2.9]) rotate([-90,0,0]) cylinder(d=3.7, h=6);
             }
         }
     }
