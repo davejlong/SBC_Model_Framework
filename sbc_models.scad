@@ -27,14 +27,23 @@
     20201021 Version 1.0.4  Added HK Odroid-HC4 as "hc4"
     20220202 Version 1.0.5  Added HK Show2 as "show2"
     20220413 Version 1.0.6  Added Odroid-M1 as "m1"
-    20220515 Version 1.0.7  Added rockpro64, jetsonnano, updated sbc_test.scad, sbc_test_components.scad and other fixes and adjustments
-
+    20220515 Version 1.0.7  Added rockpro64, jetsonnano, updated sbc_test.scad, sbc_test_components.scad
+                            and other fixes and adjustments
+    2022xxxx Version 1.0.8  rpizero,rpizero2w,rpi1a+,rpi1b+,rpi3a+,rpi3b,rpi3b+,rpi4b,rockpi4b+,
+                            rockpi4c,rockpi4c+,vim1,vim2,vim3l,vim3,vim4,
+                            tinkerboard,tinkerboard-s,tinkerboard-2,tinkerboard-r2
+                            rock64,quartz64a,quartz64b,h64b,opizero,opizero2,opir1plus_lts
+    
     see https://github.com/hominoids/SBC_Case_Builder
     
     USE: sbc(model)
-             model = "c1+","c2","c4","xu4","xu4q","mc1","hc1","hc4","n1","n2","n2+","h2"
-                     "rpi3b+","a64","rock64","rockpro64","atomicpi","jetsonnano","show2"
-
+             model = "c1+","c2","c4","xu4","xu4q","mc1","hc1","hc4","m1","n1","n2","n2+","h2","show2"
+                     "rpizero","rpizero2w","rpi1a+","rpi1b+","rpi3a+","rpi3b","rpi3b+","rpi4b",
+                     "jetsonnano","rock64","rockpro64","quartz64b","quartz64b,"h64b",
+                     "rockpi4b+","rockpi4c","rockpi4c+",
+                     "vim1","vim2","vim3l","vim3","vim4",
+                     "tinkerboard","tinkerboard-s","tinkerboard-2","tinkerboard-r2",
+                     "opizero","opizero2","opir1plus_lts"
 */
 
 include <./sbc_models.cfg>
@@ -44,7 +53,7 @@ module sbc(model) {
     sbc_model = [model];
     s = search(sbc_model,sbc_data);
 
-    $fn=60;
+    $fn=90;
     
     // pcb and holes
     // pcbsize_x, pcbsize_y, pcbsize_z, pcbcorner_radius, topmax_component_z, bottommax_component_z
@@ -132,6 +141,11 @@ module sbc(model) {
         if (class == "usb3") {
             if (loc_x!=0 || loc_y!=0) {
                 usb3(loc_x,loc_y,rotation,side,type,pcbsize_z);
+            }           
+        }
+        if (class == "usbc") {
+            if (loc_x!=0 || loc_y!=0) {
+                usbc(loc_x,loc_y,rotation,side,type,pcbsize_z);
             }           
         }
         if (class == "network") {
